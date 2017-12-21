@@ -81,13 +81,6 @@ Cmnd_Alias {{ name }} = {{ ",".join(commands) }}
 Runas_Alias {{ name }} = {{ ",".join(runas) }}
 {%- endfor %}
 
-# User privilege specification
-{%- for user,specs in users.items() %}
-  {%- for spec in specs %}
-{{ user }} {{ spec }}
-  {%- endfor %}
-{%- endfor %}
-
 # Group privilege specification
 {%- for group,specs in groups.items() %}
   {%- for spec in specs %}
@@ -100,3 +93,10 @@ Runas_Alias {{ name }} = {{ ",".join(runas) }}
 ## (the '#' here does not indicate a comment)
 #includedir {{ includedir }}
 {% endif %}
+
+# User privilege specification
+{%- for user,specs in users.items() %}
+  {%- for spec in specs %}
+{{ user }} {{ spec }}
+  {%- endfor %}
+{%- endfor %}
